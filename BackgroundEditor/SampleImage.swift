@@ -17,7 +17,8 @@ struct SampleImage {
 
   init?(url: URL) {
     guard
-      let original = UIImage(named: url.lastPathComponent),
+      let imageData = try? Data(contentsOf: url),
+      let original = UIImage(data: imageData),
       let depthData = SampleImage.depthData(forItemAt: url),
       let filterImage = CIImage(image: original)
       else {

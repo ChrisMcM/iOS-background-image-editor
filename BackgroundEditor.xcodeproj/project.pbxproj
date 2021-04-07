@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4589684F261D21DD00B5CD7C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4589684E261D21DD00B5CD7C /* CameraViewController.swift */; };
+		45896854261D29E500B5CD7C /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45896853261D29E500B5CD7C /* PhotoCaptureDelegate.swift */; };
+		45896859261D2A0D00B5CD7C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 45896858261D2A0D00B5CD7C /* LICENSE */; };
+		45896877261E649600B5CD7C /* ItemSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45896876261E649600B5CD7C /* ItemSelectionViewController.swift */; };
 		D44DBFD2261D16CD00B6619F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DBFD1261D16CD00B6619F /* AppDelegate.swift */; };
 		D44DBFD4261D16CD00B6619F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DBFD3261D16CD00B6619F /* SceneDelegate.swift */; };
-		D44DBFD6261D16CD00B6619F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DBFD5261D16CD00B6619F /* ViewController.swift */; };
-		D44DBFD9261D16CD00B6619F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44DBFD7261D16CD00B6619F /* Main.storyboard */; };
 		D44DBFDB261D16D000B6619F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44DBFDA261D16D000B6619F /* Assets.xcassets */; };
 		D44DBFDE261D16D000B6619F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44DBFDC261D16D000B6619F /* LaunchScreen.storyboard */; };
 		D44DBFE9261D16D100B6619F /* BackgroundEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DBFE8261D16D100B6619F /* BackgroundEditorTests.swift */; };
@@ -39,11 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4589684E261D21DD00B5CD7C /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		45896853261D29E500B5CD7C /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
+		45896858261D2A0D00B5CD7C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LICENSE; sourceTree = "<group>"; };
+		45896876261E649600B5CD7C /* ItemSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSelectionViewController.swift; sourceTree = "<group>"; };
 		D44DBFCE261D16CD00B6619F /* BackgroundEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44DBFD1261D16CD00B6619F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D44DBFD3261D16CD00B6619F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D44DBFD5261D16CD00B6619F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D44DBFD8261D16CD00B6619F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D44DBFDA261D16D000B6619F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D44DBFDD261D16D000B6619F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D44DBFDF261D16D000B6619F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,16 +112,18 @@
 			isa = PBXGroup;
 			children = (
 				D4D8B870261D6D4400F7F6C3 /* IMG_1311.heic */,
+				45896876261E649600B5CD7C /* ItemSelectionViewController.swift */,
 				D44DBFD1261D16CD00B6619F /* AppDelegate.swift */,
 				D44DBFD3261D16CD00B6619F /* SceneDelegate.swift */,
-				D44DBFD5261D16CD00B6619F /* ViewController.swift */,
 				D44DC014261D410900B6619F /* ImagePreviewViewController.swift */,
-				D44DBFD7261D16CD00B6619F /* Main.storyboard */,
 				D44DBFDA261D16D000B6619F /* Assets.xcassets */,
 				D44DBFDC261D16D000B6619F /* LaunchScreen.storyboard */,
 				D44DBFDF261D16D000B6619F /* Info.plist */,
 				D4D8B86B261D69F500F7F6C3 /* SampleImage.swift */,
 				D4D8B876261D711D00F7F6C3 /* DepthImageFilters.swift */,
+				4589684E261D21DD00B5CD7C /* CameraViewController.swift */,
+				45896853261D29E500B5CD7C /* PhotoCaptureDelegate.swift */,
+				45896858261D2A0D00B5CD7C /* LICENSE */,
 			);
 			path = BackgroundEditor;
 			sourceTree = "<group>";
@@ -246,7 +252,7 @@
 				D44DBFDE261D16D000B6619F /* LaunchScreen.storyboard in Resources */,
 				D44DBFDB261D16D000B6619F /* Assets.xcassets in Resources */,
 				D4D8B871261D6D4400F7F6C3 /* IMG_1311.heic in Resources */,
-				D44DBFD9261D16CD00B6619F /* Main.storyboard in Resources */,
+				45896859261D2A0D00B5CD7C /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +279,11 @@
 			files = (
 				D4D8B86C261D69F500F7F6C3 /* SampleImage.swift in Sources */,
 				D4D8B877261D711D00F7F6C3 /* DepthImageFilters.swift in Sources */,
-				D44DBFD6261D16CD00B6619F /* ViewController.swift in Sources */,
+				4589684F261D21DD00B5CD7C /* CameraViewController.swift in Sources */,
 				D44DBFD2261D16CD00B6619F /* AppDelegate.swift in Sources */,
 				D44DC015261D410900B6619F /* ImagePreviewViewController.swift in Sources */,
+				45896854261D29E500B5CD7C /* PhotoCaptureDelegate.swift in Sources */,
+				45896877261E649600B5CD7C /* ItemSelectionViewController.swift in Sources */,
 				D44DBFD4261D16CD00B6619F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,14 +320,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D44DBFD7261D16CD00B6619F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D44DBFD8261D16CD00B6619F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D44DBFDC261D16D000B6619F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -453,13 +453,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8VYN2K8EEE;
+				DEVELOPMENT_TEAM = 9C97398MPL;
 				INFOPLIST_FILE = BackgroundEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = trademe.BackgroundEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flavio.backgroundeditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -472,13 +472,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8VYN2K8EEE;
+				DEVELOPMENT_TEAM = 9C97398MPL;
 				INFOPLIST_FILE = BackgroundEditor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = trademe.BackgroundEditor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flavio.backgroundeditor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

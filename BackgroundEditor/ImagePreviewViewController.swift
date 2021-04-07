@@ -11,7 +11,7 @@ import UIKit
 import VideoToolbox
 
 class ImagePreviewViewController: UIViewController {
-    var imageURL: URL = Bundle.main.url(forResource: "IMG_1311", withExtension: "heic")!
+    var imageURL: URL// = Bundle.main.url(forResource: "IMG_1311", withExtension: "heic")!
     let previewImageView = UIImageView()
     
     let colours: [UIColor] = [.white, .black, .red, .orange, .yellow, .green, .blue, .purple]
@@ -29,11 +29,10 @@ class ImagePreviewViewController: UIViewController {
     
     var colorCarousel: UICollectionView?
     
-    init(imageURL: URL?) {
-        if let imageURL = imageURL {
-            self.imageURL = imageURL
-        }
+    init(imageURL: URL) {
+        self.imageURL = imageURL
         super.init(nibName: nil, bundle: nil)
+        self.modalPresentationStyle = .fullScreen
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -58,6 +57,15 @@ class ImagePreviewViewController: UIViewController {
                                      depthSlider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24)])
         
         loadSample(withFileURL: imageURL)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        do {
+            try FileManager.default.removeItem(at: imageURL)
+        } catch {
+            print("Could not remove file at url: \(imageURL)")
+        }
     }
     
     func setupColorCarousel() {
