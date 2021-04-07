@@ -11,7 +11,7 @@ import UIKit
 import VideoToolbox
 
 class ImagePreviewViewController: UIViewController {
-    var imageURL: URL = Bundle.main.url(forResource: "IMG_1311", withExtension: "heic")!
+    var imageURL: URL// = Bundle.main.url(forResource: "IMG_1311", withExtension: "heic")!
     let previewImageView = UIImageView()
     
     let colors: [UIColor] = [.white, .black, .red, .orange, .yellow, .green, .blue, .purple]
@@ -49,12 +49,10 @@ class ImagePreviewViewController: UIViewController {
         return carousel
     }()
     
-    init(imageURL: URL?) {
-        if let imageURL = imageURL {
-            self.imageURL = imageURL
-        }
-        self.selectedColor = colors.first!
+    init(imageURL: URL) {
+        self.imageURL = imageURL
         super.init(nibName: nil, bundle: nil)
+        self.modalPresentationStyle = .fullScreen
     }
     
     required init?(coder: NSCoder) {
@@ -104,9 +102,17 @@ class ImagePreviewViewController: UIViewController {
                                      depthSlider.bottomAnchor.constraint(equalTo: colorCarousel.topAnchor, constant: -16)])
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        do {
+            try FileManager.default.removeItem(at: imageURL)
+        } catch {
+            print("Could not remove file at url: \(imageURL)")
+        }
+    }
+   
     @objc
-    func toggleUI() {
-        
+    func toggleUI() {        
         UIView.animate(withDuration: 0.3) {
             self.navigationController?.setNavigationBarHidden(!(self.navigationController?.navigationBar.isHidden ?? true), animated: true)
             self.depthSlider.alpha = self.depthSlider.alpha == 0.0 ? 1.0 : 0.0
