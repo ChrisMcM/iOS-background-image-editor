@@ -8,12 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var initialLoad = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if initialLoad {
+            navigationController?.pushViewController(ImagePreviewViewController(imageURL: nil), animated: true)
+        }
+        initialLoad = false
+    }
 }
-
