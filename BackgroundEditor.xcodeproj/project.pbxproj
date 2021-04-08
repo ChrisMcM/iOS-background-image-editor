@@ -10,7 +10,6 @@
 		4589684F261D21DD00B5CD7C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4589684E261D21DD00B5CD7C /* CameraViewController.swift */; };
 		45896854261D29E500B5CD7C /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45896853261D29E500B5CD7C /* PhotoCaptureDelegate.swift */; };
 		45896859261D2A0D00B5CD7C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 45896858261D2A0D00B5CD7C /* LICENSE */; };
-		45896877261E649600B5CD7C /* ItemSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45896876261E649600B5CD7C /* ItemSelectionViewController.swift */; };
 		D44DBFD2261D16CD00B6619F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DBFD1261D16CD00B6619F /* AppDelegate.swift */; };
 		D44DBFD4261D16CD00B6619F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DBFD3261D16CD00B6619F /* SceneDelegate.swift */; };
 		D44DBFDB261D16D000B6619F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44DBFDA261D16D000B6619F /* Assets.xcassets */; };
@@ -21,6 +20,11 @@
 		D4D8B86C261D69F500F7F6C3 /* SampleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8B86B261D69F500F7F6C3 /* SampleImage.swift */; };
 		D4D8B871261D6D4400F7F6C3 /* IMG_1311.heic in Resources */ = {isa = PBXBuildFile; fileRef = D4D8B870261D6D4400F7F6C3 /* IMG_1311.heic */; };
 		D4D8B877261D711D00F7F6C3 /* DepthImageFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8B876261D711D00F7F6C3 /* DepthImageFilters.swift */; };
+		D4D8B89B261E84CC00F7F6C3 /* TMBackgroundEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8B892261E84CC00F7F6C3 /* TMBackgroundEditor.framework */; };
+		D4D8B8A2261E84CC00F7F6C3 /* TMBackgroundEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D8B8A1261E84CC00F7F6C3 /* TMBackgroundEditorTests.swift */; };
+		D4D8B8A4261E84CC00F7F6C3 /* TMBackgroundEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D8B894261E84CC00F7F6C3 /* TMBackgroundEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4D8B8A7261E84CC00F7F6C3 /* TMBackgroundEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8B892261E84CC00F7F6C3 /* TMBackgroundEditor.framework */; };
+		D4D8B8A8261E84CC00F7F6C3 /* TMBackgroundEditor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4D8B892261E84CC00F7F6C3 /* TMBackgroundEditor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +42,47 @@
 			remoteGlobalIDString = D44DBFCD261D16CD00B6619F;
 			remoteInfo = BackgroundEditor;
 		};
+		D4D8B89C261E84CC00F7F6C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D44DBFC6261D16CD00B6619F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4D8B891261E84CC00F7F6C3;
+			remoteInfo = TMBackgroundEditor;
+		};
+		D4D8B89E261E84CC00F7F6C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D44DBFC6261D16CD00B6619F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D44DBFCD261D16CD00B6619F;
+			remoteInfo = BackgroundEditor;
+		};
+		D4D8B8A5261E84CC00F7F6C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D44DBFC6261D16CD00B6619F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4D8B891261E84CC00F7F6C3;
+			remoteInfo = TMBackgroundEditor;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D4D8B8AC261E84CC00F7F6C3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D4D8B8A8261E84CC00F7F6C3 /* TMBackgroundEditor.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4589684E261D21DD00B5CD7C /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		45896853261D29E500B5CD7C /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		45896858261D2A0D00B5CD7C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LICENSE; sourceTree = "<group>"; };
-		45896876261E649600B5CD7C /* ItemSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSelectionViewController.swift; sourceTree = "<group>"; };
 		D44DBFCE261D16CD00B6619F /* BackgroundEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44DBFD1261D16CD00B6619F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D44DBFD3261D16CD00B6619F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +99,12 @@
 		D4D8B86B261D69F500F7F6C3 /* SampleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleImage.swift; sourceTree = "<group>"; };
 		D4D8B870261D6D4400F7F6C3 /* IMG_1311.heic */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_1311.heic; sourceTree = "<group>"; };
 		D4D8B876261D711D00F7F6C3 /* DepthImageFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthImageFilters.swift; sourceTree = "<group>"; };
+		D4D8B892261E84CC00F7F6C3 /* TMBackgroundEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TMBackgroundEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4D8B894261E84CC00F7F6C3 /* TMBackgroundEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMBackgroundEditor.h; sourceTree = "<group>"; };
+		D4D8B895261E84CC00F7F6C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4D8B89A261E84CC00F7F6C3 /* TMBackgroundEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMBackgroundEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4D8B8A1261E84CC00F7F6C3 /* TMBackgroundEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBackgroundEditorTests.swift; sourceTree = "<group>"; };
+		D4D8B8A3261E84CC00F7F6C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D8B8A7261E84CC00F7F6C3 /* TMBackgroundEditor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +130,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4D8B88F261E84CC00F7F6C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4D8B897261E84CC00F7F6C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4D8B89B261E84CC00F7F6C3 /* TMBackgroundEditor.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -94,6 +154,8 @@
 				D44DBFD0261D16CD00B6619F /* BackgroundEditor */,
 				D44DBFE7261D16D100B6619F /* BackgroundEditorTests */,
 				D44DBFF2261D16D100B6619F /* BackgroundEditorUITests */,
+				D4D8B893261E84CC00F7F6C3 /* TMBackgroundEditor */,
+				D4D8B8A0261E84CC00F7F6C3 /* TMBackgroundEditorTests */,
 				D44DBFCF261D16CD00B6619F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,6 +166,8 @@
 				D44DBFCE261D16CD00B6619F /* BackgroundEditor.app */,
 				D44DBFE4261D16D100B6619F /* BackgroundEditorTests.xctest */,
 				D44DBFEF261D16D100B6619F /* BackgroundEditorUITests.xctest */,
+				D4D8B892261E84CC00F7F6C3 /* TMBackgroundEditor.framework */,
+				D4D8B89A261E84CC00F7F6C3 /* TMBackgroundEditorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				D4D8B870261D6D4400F7F6C3 /* IMG_1311.heic */,
-				45896876261E649600B5CD7C /* ItemSelectionViewController.swift */,
 				D44DBFD1261D16CD00B6619F /* AppDelegate.swift */,
 				D44DBFD3261D16CD00B6619F /* SceneDelegate.swift */,
 				D44DC014261D410900B6619F /* ImagePreviewViewController.swift */,
@@ -146,7 +209,36 @@
 			path = BackgroundEditorUITests;
 			sourceTree = "<group>";
 		};
+		D4D8B893261E84CC00F7F6C3 /* TMBackgroundEditor */ = {
+			isa = PBXGroup;
+			children = (
+				D4D8B894261E84CC00F7F6C3 /* TMBackgroundEditor.h */,
+				D4D8B895261E84CC00F7F6C3 /* Info.plist */,
+			);
+			path = TMBackgroundEditor;
+			sourceTree = "<group>";
+		};
+		D4D8B8A0261E84CC00F7F6C3 /* TMBackgroundEditorTests */ = {
+			isa = PBXGroup;
+			children = (
+				D4D8B8A1261E84CC00F7F6C3 /* TMBackgroundEditorTests.swift */,
+				D4D8B8A3261E84CC00F7F6C3 /* Info.plist */,
+			);
+			path = TMBackgroundEditorTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D4D8B88D261E84CC00F7F6C3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4D8B8A4261E84CC00F7F6C3 /* TMBackgroundEditor.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		D44DBFCD261D16CD00B6619F /* BackgroundEditor */ = {
@@ -156,10 +248,12 @@
 				D44DBFCA261D16CD00B6619F /* Sources */,
 				D44DBFCB261D16CD00B6619F /* Frameworks */,
 				D44DBFCC261D16CD00B6619F /* Resources */,
+				D4D8B8AC261E84CC00F7F6C3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D4D8B8A6261E84CC00F7F6C3 /* PBXTargetDependency */,
 			);
 			name = BackgroundEditor;
 			productName = BackgroundEditor;
@@ -202,6 +296,43 @@
 			productReference = D44DBFEF261D16D100B6619F /* BackgroundEditorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D4D8B891261E84CC00F7F6C3 /* TMBackgroundEditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4D8B8A9261E84CC00F7F6C3 /* Build configuration list for PBXNativeTarget "TMBackgroundEditor" */;
+			buildPhases = (
+				D4D8B88D261E84CC00F7F6C3 /* Headers */,
+				D4D8B88E261E84CC00F7F6C3 /* Sources */,
+				D4D8B88F261E84CC00F7F6C3 /* Frameworks */,
+				D4D8B890261E84CC00F7F6C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TMBackgroundEditor;
+			productName = TMBackgroundEditor;
+			productReference = D4D8B892261E84CC00F7F6C3 /* TMBackgroundEditor.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D4D8B899261E84CC00F7F6C3 /* TMBackgroundEditorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4D8B8AD261E84CC00F7F6C3 /* Build configuration list for PBXNativeTarget "TMBackgroundEditorTests" */;
+			buildPhases = (
+				D4D8B896261E84CC00F7F6C3 /* Sources */,
+				D4D8B897261E84CC00F7F6C3 /* Frameworks */,
+				D4D8B898261E84CC00F7F6C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4D8B89D261E84CC00F7F6C3 /* PBXTargetDependency */,
+				D4D8B89F261E84CC00F7F6C3 /* PBXTargetDependency */,
+			);
+			name = TMBackgroundEditorTests;
+			productName = TMBackgroundEditorTests;
+			productReference = D4D8B89A261E84CC00F7F6C3 /* TMBackgroundEditorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -219,6 +350,13 @@
 						TestTargetID = D44DBFCD261D16CD00B6619F;
 					};
 					D44DBFEE261D16D100B6619F = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = D44DBFCD261D16CD00B6619F;
+					};
+					D4D8B891261E84CC00F7F6C3 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					D4D8B899261E84CC00F7F6C3 = {
 						CreatedOnToolsVersion = 12.4;
 						TestTargetID = D44DBFCD261D16CD00B6619F;
 					};
@@ -240,6 +378,8 @@
 				D44DBFCD261D16CD00B6619F /* BackgroundEditor */,
 				D44DBFE3261D16D100B6619F /* BackgroundEditorTests */,
 				D44DBFEE261D16D100B6619F /* BackgroundEditorUITests */,
+				D4D8B891261E84CC00F7F6C3 /* TMBackgroundEditor */,
+				D4D8B899261E84CC00F7F6C3 /* TMBackgroundEditorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -270,6 +410,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4D8B890261E84CC00F7F6C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4D8B898261E84CC00F7F6C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -283,7 +437,6 @@
 				D44DBFD2261D16CD00B6619F /* AppDelegate.swift in Sources */,
 				D44DC015261D410900B6619F /* ImagePreviewViewController.swift in Sources */,
 				45896854261D29E500B5CD7C /* PhotoCaptureDelegate.swift in Sources */,
-				45896877261E649600B5CD7C /* ItemSelectionViewController.swift in Sources */,
 				D44DBFD4261D16CD00B6619F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +457,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4D8B88E261E84CC00F7F6C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4D8B896261E84CC00F7F6C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4D8B8A2261E84CC00F7F6C3 /* TMBackgroundEditorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -316,6 +484,21 @@
 			isa = PBXTargetDependency;
 			target = D44DBFCD261D16CD00B6619F /* BackgroundEditor */;
 			targetProxy = D44DBFF0261D16D100B6619F /* PBXContainerItemProxy */;
+		};
+		D4D8B89D261E84CC00F7F6C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4D8B891261E84CC00F7F6C3 /* TMBackgroundEditor */;
+			targetProxy = D4D8B89C261E84CC00F7F6C3 /* PBXContainerItemProxy */;
+		};
+		D4D8B89F261E84CC00F7F6C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D44DBFCD261D16CD00B6619F /* BackgroundEditor */;
+			targetProxy = D4D8B89E261E84CC00F7F6C3 /* PBXContainerItemProxy */;
+		};
+		D4D8B8A6261E84CC00F7F6C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4D8B891261E84CC00F7F6C3 /* TMBackgroundEditor */;
+			targetProxy = D4D8B8A5261E84CC00F7F6C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -565,6 +748,102 @@
 			};
 			name = Release;
 		};
+		D4D8B8AA261E84CC00F7F6C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8VYN2K8EEE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TMBackgroundEditor/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = trademe.TMBackgroundEditor;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D4D8B8AB261E84CC00F7F6C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8VYN2K8EEE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = TMBackgroundEditor/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = trademe.TMBackgroundEditor;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D4D8B8AE261E84CC00F7F6C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TMBackgroundEditorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = trademe.TMBackgroundEditorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BackgroundEditor.app/BackgroundEditor";
+			};
+			name = Debug;
+		};
+		D4D8B8AF261E84CC00F7F6C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TMBackgroundEditorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = trademe.TMBackgroundEditorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BackgroundEditor.app/BackgroundEditor";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -600,6 +879,24 @@
 			buildConfigurations = (
 				D44DBFFF261D16D100B6619F /* Debug */,
 				D44DC000261D16D100B6619F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4D8B8A9261E84CC00F7F6C3 /* Build configuration list for PBXNativeTarget "TMBackgroundEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4D8B8AA261E84CC00F7F6C3 /* Debug */,
+				D4D8B8AB261E84CC00F7F6C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4D8B8AD261E84CC00F7F6C3 /* Build configuration list for PBXNativeTarget "TMBackgroundEditorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4D8B8AE261E84CC00F7F6C3 /* Debug */,
+				D4D8B8AF261E84CC00F7F6C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

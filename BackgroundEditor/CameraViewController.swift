@@ -84,19 +84,31 @@ class CameraViewController: UIViewController {
     private var photoQualityPrioritizationMode: AVCapturePhotoOutput.QualityPrioritization = .balanced
     private var photoURL: String?
     
+    lazy var loadingSpinner: UIActivityIndicatorView = {
+       let spinner = UIActivityIndicatorView(style: .large)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.hidesWhenStopped = true
+        spinner.tintColor = .gray
+        return spinner
+    }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         previewView = PreviewView(frame: self.view.frame)
         previewView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(previewView)
         
-        self.modalPresentationStyle = .fullScreen
         NSLayoutConstraint.activate([
             previewView.topAnchor.constraint(equalTo: self.view.topAnchor),
             previewView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             previewView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             previewView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
+        
+        view.addSubview(loadingSpinner)
+        NSLayoutConstraint.activate([loadingSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     loadingSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
         
         previewView.session = session
         
@@ -294,7 +306,7 @@ class CameraViewController: UIViewController {
          the main thread and session configuration is done on the session queue.
          */
         let videoPreviewLayerOrientation = previewView.videoPreviewLayer.connection?.videoOrientation
-        
+        loadingSpinner.startAnimating()
         sessionQueue.async {
             if let photoOutputConnection = self.photoOutput.connection(with: .video) {
                 photoOutputConnection.videoOrientation = videoPreviewLayerOrientation!
@@ -343,8 +355,9 @@ class CameraViewController: UIViewController {
                     
                 }
                 DispatchQueue.main.async {
+                    self.loadingSpinner.stopAnimating()
                     guard let photoURL = photoCaptureProcessor.photoURL else { return }
-                    self.present(ImagePreviewViewController(imageURL: URL(string: photoURL)!), animated: true)
+                    self.navigationController?.pushViewController(ImagePreviewViewController(imageURL: URL(string: photoURL)!), animated: true)
                 }
                 
             }, photoProcessingHandler: { _ in })

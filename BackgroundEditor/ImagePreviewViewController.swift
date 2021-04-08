@@ -22,7 +22,20 @@ class ImagePreviewViewController: UIViewController {
         }
     }
     
-    var depthSlider: UISlider = UISlider()
+    let depthSlider: UISlider = UISlider()
+    
+    lazy var saveButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveImage))
+        return button
+    }()
+    
+    lazy var loadingSpinner: UIActivityIndicatorView = {
+       let spinner = UIActivityIndicatorView(style: .large)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.hidesWhenStopped = true
+        spinner.tintColor = .gray
+        return spinner
+    }()
 
     /// The sample resource currently being displayed.
     var currentSampleImage: SampleImage? = nil
@@ -51,6 +64,7 @@ class ImagePreviewViewController: UIViewController {
     
     init(imageURL: URL) {
         self.imageURL = imageURL
+        selectedColor = colors.first!
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .fullScreen
     }
@@ -61,9 +75,16 @@ class ImagePreviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = saveButton
         setupImageView()
         setupColorCarousel()
         setupDepthSlider()
+        
+
+        view.addSubview(loadingSpinner)
+        NSLayoutConstraint.activate([loadingSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     loadingSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+        
         loadSample(withFileURL: imageURL)
     }
     
@@ -162,6 +183,56 @@ extension ImagePreviewViewController {
         let focus = CGFloat(depthSlider.value)
         return depthFilters.createSpotlightImage(for: image, withFocus: focus)
     }
+    
+    @objc
+    func saveImage() {
+        loadingSpinner.startAnimating()
+
+        guard let topImage = previewImageView.image else {
+            errorSavingImage()
+            return }
+        
+        let size = topImage.size
+        let bottomImage = selectedColor.image(size)
+
+        UIGraphicsBeginImageContext(size)
+
+        let areaSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        bottomImage.draw(in: areaSize)
+
+        topImage.draw(in: areaSize, blendMode: .normal, alpha: 0.8)
+
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        writeToPhotoAlbum(image: newImage)
+    }
+    
+    func writeToPhotoAlbum(image: UIImage) {
+
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
+    }
+    
+    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        print("Save finished!")
+        loadingSpinner.stopAnimating()
+        successSavingImage()
+
+    }
+    
+    func errorSavingImage() {
+        let alert = UIAlertController(title: "Error", message: "Failed to save image", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func successSavingImage() {
+        let alert = UIAlertController(title: "Success", message: "Saved image to photo library", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Siiiick", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension ImagePreviewViewController {
@@ -191,6 +262,15 @@ extension Collection {
     /// Returns the element at the specified index iff it is within bounds, otherwise nil.
     subscript (safe index: Index) -> Iterator.Element? {
         return indices.contains(index) ? self[index] : nil
+    }
+}
+
+extension UIColor {
+    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { rendererContext in
+            self.setFill()
+            rendererContext.fill(CGRect(origin: .zero, size: size))
+        }
     }
 }
 
