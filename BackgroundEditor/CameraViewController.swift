@@ -61,13 +61,13 @@ class CameraViewController: UIViewController {
     private let session = AVCaptureSession()
     // Communicate with the session and other session objects on this queue.
     private let sessionQueue = DispatchQueue(label: "session queue")
-    
-    private var isSessionRunning = false
+
     var windowOrientation: UIInterfaceOrientation {
         return view.window?.windowScene?.interfaceOrientation ?? .unknown
     }
     @objc dynamic var videoDeviceInput: AVCaptureDeviceInput!
     private var selectedSemanticSegmentationMatteTypes = [AVSemanticSegmentationMatte.MatteType]()
+    private var tapGesture: UITapGestureRecognizer!
     private let photoOutput = AVCapturePhotoOutput()
     private var inProgressPhotoCaptureDelegates = [Int64: PhotoCaptureProcessor]()
     private var setupResult: SessionSetupResult = .success
@@ -150,6 +150,9 @@ class CameraViewController: UIViewController {
             takePhotoButton.heightAnchor.constraint(equalToConstant: 60),
             takePhotoButton.widthAnchor.constraint(equalToConstant: 60)
         ])
+        
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(focusAndExposeTap(_:)))
+        previewView.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -161,7 +164,6 @@ class CameraViewController: UIViewController {
                 // Only setup observers and start the session if setup succeeded.
                 //self.addObservers()
                 self.session.startRunning()
-                self.isSessionRunning = self.session.isRunning
                 
             case .notAuthorized:
                 DispatchQueue.main.async {
@@ -198,15 +200,62 @@ class CameraViewController: UIViewController {
                 }
             }
         }
+        
+        if !self.photoOutput.availableSemanticSegmentationMatteTypes.isEmpty {
+            self.photoOutput.enabledSemanticSegmentationMatteTypes = self.photoOutput.availableSemanticSegmentationMatteTypes
+            self.selectedSemanticSegmentationMatteTypes = self.photoOutput.availableSemanticSegmentationMatteTypes
+        }
         self.view.bringSubviewToFront(takePhotoButton)
+
     }
     
+    @objc private func focusAndExposeTap(_ gestureRecognizer: UITapGestureRecognizer) {
+        
+        sessionQueue.async {
+            self.depthDataDeliveryMode = .on
+            self.portraitEffectsMatteDeliveryMode = .on
+            self.portraitEffectsMatteDeliveryMode = .on
+        }
+    
+        let devicePoint = previewView.videoPreviewLayer.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view))
+        focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
+    }
+    
+    private func focus(with focusMode: AVCaptureDevice.FocusMode,
+                       exposureMode: AVCaptureDevice.ExposureMode,
+                       at devicePoint: CGPoint,
+                       monitorSubjectAreaChange: Bool) {
+        
+        sessionQueue.async {
+            let device = self.videoDeviceInput.device
+            do {
+                try device.lockForConfiguration()
+                
+                /*
+                 Setting (focus/exposure)PointOfInterest alone does not initiate a (focus/exposure) operation.
+                 Call set(Focus/Exposure)Mode() to apply the new point of interest.
+                 */
+                if device.isFocusPointOfInterestSupported && device.isFocusModeSupported(focusMode) {
+                    device.focusPointOfInterest = devicePoint
+                    device.focusMode = focusMode
+                }
+                
+                if device.isExposurePointOfInterestSupported && device.isExposureModeSupported(exposureMode) {
+                    device.exposurePointOfInterest = devicePoint
+                    device.exposureMode = exposureMode
+                }
+                
+                device.isSubjectAreaChangeMonitoringEnabled = monitorSubjectAreaChange
+                device.unlockForConfiguration()
+            } catch {
+                print("Could not lock device for configuration: \(error)")
+            }
+        }
+    }
     override func viewWillDisappear(_ animated: Bool) {
         sessionQueue.async {
             if self.setupResult == .success {
                 self.session.stopRunning()
-                self.isSessionRunning = self.session.isRunning
-                //self.removeObservers()
             }
         }
         
@@ -278,16 +327,19 @@ class CameraViewController: UIViewController {
         
         // Add the photo output.
         if session.canAddOutput(photoOutput) {
+            for type in photoOutput.availableSemanticSegmentationMatteTypes {
+                print("TM Debug: Wowow")
+                print(type.rawValue)
+            }
             session.addOutput(photoOutput)
             photoOutput.isHighResolutionCaptureEnabled = true
             photoOutput.isDepthDataDeliveryEnabled = photoOutput.isDepthDataDeliverySupported
             photoOutput.isPortraitEffectsMatteDeliveryEnabled = photoOutput.isPortraitEffectsMatteDeliverySupported
             photoOutput.enabledSemanticSegmentationMatteTypes = photoOutput.availableSemanticSegmentationMatteTypes
             selectedSemanticSegmentationMatteTypes = photoOutput.availableSemanticSegmentationMatteTypes
-            photoOutput.maxPhotoQualityPrioritization = .quality
-            depthDataDeliveryMode = photoOutput.isDepthDataDeliverySupported ? .on : .off
-            portraitEffectsMatteDeliveryMode = photoOutput.isPortraitEffectsMatteDeliverySupported ? .on : .off
-            photoQualityPrioritizationMode = .balanced
+            self.photoOutput.maxPhotoQualityPrioritization = .quality
+            self.depthDataDeliveryMode = .on
+            self.portraitEffectsMatteDeliveryMode = .on
             
         } else {
             print("Could not add photo output to the session")
